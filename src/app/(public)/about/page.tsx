@@ -8,13 +8,16 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="px-4 py-12 sm:px-6">
+    <div className="px-5 py-12 sm:px-8 sm:py-16">
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-3xl font-bold text-foreground">
+        <span className="text-[11px] font-semibold uppercase tracking-widest text-primary">
+          About
+        </span>
+        <h1 className="mt-1 font-display text-3xl font-bold text-foreground sm:text-4xl">
           About the Dashboard
         </h1>
 
-        <div className="mt-8 space-y-6 text-muted-foreground leading-relaxed">
+        <div className="mt-10 space-y-6 text-[15px] leading-[1.8] text-muted-foreground">
           <p>
             The Climate Comms Dashboard is designed as a dynamic, living
             resource: an open, continuously evolving space to explore what is
@@ -35,7 +38,7 @@ export default function AboutPage() {
             campaigns in real-world learning.
           </p>
 
-          <h2 className="text-xl font-bold text-foreground pt-4">
+          <h2 className="font-display text-xl font-bold text-foreground !mt-10">
             Why This Exists
           </h2>
 
@@ -53,14 +56,16 @@ export default function AboutPage() {
             messages is no longer limited to professional communicators.
           </p>
 
-          <h2 className="text-xl font-bold text-foreground pt-4">
+          <h2 className="font-display text-xl font-bold text-foreground !mt-10">
             What We Aim To Do
           </h2>
 
-          <p>By making information visible across geographies, languages,
-            formats, and audiences, the dashboard aims to:</p>
+          <p>
+            By making information visible across geographies, languages, formats,
+            and audiences, the dashboard aims to:
+          </p>
 
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-3 !mt-4">
             {[
               "Reduce fragmentation of knowledge across the climate communication ecosystem",
               "Enable more responsive, creative, and effective climate communication",
@@ -68,14 +73,16 @@ export default function AboutPage() {
               "Unlock creativity and agency in climate storytelling and messaging",
               "Generate real-world insights on what drives engagement and action",
             ].map((item) => (
-              <li key={item} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+              <li key={item} className="flex items-start gap-3 text-sm">
+                <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                </span>
                 {item}
               </li>
             ))}
           </ul>
 
-          <h2 className="text-xl font-bold text-foreground pt-4">
+          <h2 className="font-display text-xl font-bold text-foreground !mt-10">
             For Everyone Working on Climate
           </h2>
 

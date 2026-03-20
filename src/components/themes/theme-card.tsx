@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import {
   Wheat,
   TreePine,
@@ -38,23 +39,45 @@ export function ThemeCard({
   return (
     <Link
       href={`/themes/${slug}`}
-      className="group flex flex-col rounded-lg border border-border bg-white p-5 transition-shadow hover:shadow-md"
-      style={{ borderLeftColor: color, borderLeftWidth: 4 }}
+      className="theme-card-glow group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card"
     >
-      <div className="mb-3 flex items-center gap-3">
-        <div
-          className="flex h-10 w-10 items-center justify-center rounded-lg"
-          style={{ backgroundColor: `${color}15` }}
-        >
-          <Icon size={20} style={{ color }} />
+      {/* Colored top band */}
+      <div
+        className="relative h-24 sm:h-28"
+        style={{
+          background: `linear-gradient(135deg, ${color}dd, ${color}88)`,
+        }}
+      >
+        {/* Large faded icon in background */}
+        <div className="absolute -bottom-3 -right-3 opacity-[0.15]">
+          <Icon size={80} className="text-white" strokeWidth={1} />
         </div>
-        <h3 className="text-base font-semibold text-foreground group-hover:text-primary">
-          {name}
-        </h3>
+        {/* Icon badge */}
+        <div className="absolute bottom-0 left-5 translate-y-1/2">
+          <div
+            className="flex h-11 w-11 items-center justify-center rounded-xl border-2 border-card shadow-sm"
+            style={{ backgroundColor: color }}
+          >
+            <Icon size={20} className="text-white" />
+          </div>
+        </div>
       </div>
-      <p className="text-sm leading-relaxed text-muted-foreground">
-        {description}
-      </p>
+
+      {/* Content */}
+      <div className="flex flex-1 flex-col px-5 pb-5 pt-8">
+        <div className="flex items-start justify-between">
+          <h3 className="font-display text-lg font-bold text-foreground">
+            {name}
+          </h3>
+          <ArrowUpRight
+            size={16}
+            className="mt-1 flex-shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100"
+          />
+        </div>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          {description}
+        </p>
+      </div>
     </Link>
   );
 }

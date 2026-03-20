@@ -5,13 +5,16 @@
   --foreground: #1a1a1a;
   --primary: #0d7377;
   --primary-dark: #095456;
+  --primary-light: #e8f4f4;
   --secondary: #d4a843;
+  --secondary-light: #faf3e0;
   --accent: #c4572a;
-  --muted: #f5f3ef;
+  --accent-light: #fdf0eb;
+  --muted: #f0ece4;
   --muted-foreground: #6b6560;
-  --border: #e5e0d8;
+  --border: #ddd6cb;
+  --card: #ffffff;
 
-  /* Theme accent colours */
   --theme-agriculture: #5b8c3e;
   --theme-forests: #2d5f2d;
   --theme-water: #2980b9;
@@ -25,16 +28,107 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
   --color-secondary: var(--secondary);
+  --color-secondary-light: var(--secondary-light);
   --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Hero gradient background */
+.hero-gradient {
+  background: linear-gradient(135deg, #0a5c5f 0%, #0d7377 40%, #0d6a5e 100%);
+}
+
+/* Dark section background */
+.dark-section {
+  background: #2a2520;
+}
+
+/* Noise texture overlay */
+.noise-bg {
+  position: relative;
+}
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* Staggered fade-in animation */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.4s; }
+.delay-6 { animation-delay: 0.48s; }
+
+/* Topographic contour pattern for hero */
+.topo-pattern::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  pointer-events: none;
+  background-image:
+    repeating-radial-gradient(circle at 30% 60%, transparent 0px, transparent 40px, rgba(255,255,255,0.15) 41px, transparent 42px),
+    repeating-radial-gradient(circle at 70% 40%, transparent 0px, transparent 60px, rgba(255,255,255,0.1) 61px, transparent 62px),
+    repeating-radial-gradient(circle at 50% 80%, transparent 0px, transparent 80px, rgba(255,255,255,0.08) 81px, transparent 82px);
+}
+
+/* Theme card hover glow */
+.theme-card-glow {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.theme-card-glow:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 24px -8px rgba(0,0,0,0.08),
+    0 4px 8px -2px rgba(0,0,0,0.04);
+}
+
+/* Stat counter style */
+.stat-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection colour */
+::selection {
+  background-color: rgba(13, 115, 119, 0.15);
 }
